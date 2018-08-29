@@ -33,7 +33,7 @@ const GridFinal: React.SFC<GridProps> = props => (
 
 export default () => (
   <>
-    {/* No props suggestions  */}
+    {/* No props suggestions/autocomplete  */}
     <Foo />
 
     {/* Ok */}
