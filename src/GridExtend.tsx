@@ -27,13 +27,14 @@ const Grid: React.SFC<GridProps> = ({ pad, classes, ...rest }) => (
 export const Foo = withStyles(styles)(Grid);
 export const Bar = withStyles(styles)<GridProps>(Grid);
 
+// I'm just drilling the props, but in a real scenario I could make some customizations here
 const GridFinal: React.SFC<GridProps> = props => (
-  <Foo>Grid final using foo</Foo>
+  <Foo {...props}>Grid final using foo</Foo>
 );
 
 export default () => (
   <>
-    {/* No props suggestions/autocomplete  */}
+    {/* No props suggestions/autocomplete, but compiler likes it  */}
     <Foo />
 
     {/* Ok */}
