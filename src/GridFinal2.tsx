@@ -29,11 +29,21 @@ const Grid: React.SFC<GridProps & WithStyles<Styles>> = ({
   ...rest
 }) => <GridMaterial className={pad ? classes.pad : undefined} {...rest} />;
 
-const GridFinal2 = withStyles(styles)<GridProps>(Grid);
+const Foo = withStyles(styles)<GridProps>(Grid);
+
+const Section: React.SFC<GridProps & { description: string }> = ({
+  description,
+  ...props
+}) => (
+  <Foo md={6} {...props}>
+    {description}
+    Grid final using foo
+  </Foo>
+);
 
 export default () => (
   <>
     {/* Ok */}
-    <GridFinal2 />
+    <Section description="" />
   </>
 );

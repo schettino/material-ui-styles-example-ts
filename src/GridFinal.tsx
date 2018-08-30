@@ -29,10 +29,15 @@ const Grid: React.SFC<GridProps> = ({ pad, classes, ...rest }) => (
 );
 
 export const Foo = withStyles(styles)(Grid);
-export const Bar = withStyles(styles)<GridProps>(Grid);
 
-const GridFinal: React.SFC<GridProps> = props => (
-  <Foo>Grid final using foo</Foo>
+const SectionFoo: React.SFC<GridProps & { description: string }> = ({
+  description,
+  ...props
+}) => (
+  <Foo md={6} {...props}>
+    {description}
+    Grid final using foo
+  </Foo>
 );
 
 export default () => (
@@ -40,10 +45,7 @@ export default () => (
     {/* Ok  */}
     <Foo />
 
-    {/* Ok */}
-    <Bar />
-
     {/* Ok  */}
-    <GridFinal />
+    <SectionFoo description="" />
   </>
 );

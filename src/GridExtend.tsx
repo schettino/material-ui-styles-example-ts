@@ -27,9 +27,17 @@ const Grid: React.SFC<GridProps> = ({ pad, classes, ...rest }) => (
 export const Foo = withStyles(styles)(Grid);
 export const Bar = withStyles(styles)<GridProps>(Grid);
 
-// I'm just drilling the props, but in a real scenario I could make some customizations here
-const GridFinal: React.SFC<GridProps> = props => (
-  <Foo {...props}>Grid final using foo</Foo>
+const SectionFoo: React.SFC<GridProps> = props => (
+  // Error: Property 'md' does not exist on..
+  <Foo md={6} {...props}>
+    Grid final using foo
+  </Foo>
+);
+
+const SectionBar: React.SFC<GridProps> = props => (
+  <Bar md={6} {...props}>
+    Grid final using foo
+  </Bar>
 );
 
 export default () => (
@@ -41,6 +49,9 @@ export default () => (
     <Bar />
 
     {/* Error: Property 'classes' is missing in type  */}
-    <GridFinal />
+    <SectionFoo />
+
+    {/* Error: Property 'classes' is missing in type  */}
+    <SectionBar />
   </>
 );
